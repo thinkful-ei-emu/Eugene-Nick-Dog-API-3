@@ -1,12 +1,19 @@
+/* eslint-disable no-console */
 'use strict';
 
+
+
 function getDogImage() {
-  fetch('https://dog.ceo/api/breeds/image/random')
+  let input = $('.userInput').val();
+  fetch(`https://dog.ceo/api/breed/${input}/images/random`)
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+
+    //throw new Error ('Breed does not exist') 
+    //.catch(error => alert('Something went wrong'));
 }
+
 
 function displayResults(responseJson) {
   console.log(responseJson);
